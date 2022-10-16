@@ -7,7 +7,7 @@ using System.Text;
 
 namespace DataAccessLayer.EntityFramework
 {
-    class EfCategoryDal:GenericRepository<Category>,ICategoryDal
+    public class EfCategoryDal:GenericRepository<Category>,ICategoryDal
     {
 
     }

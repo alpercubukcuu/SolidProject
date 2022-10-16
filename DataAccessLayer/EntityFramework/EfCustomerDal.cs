@@ -7,7 +7,7 @@ using System.Text;
 
 namespace DataAccessLayer.EntityFramework
 {
-    class EfCustomerDal:GenericRepository<Customer>,ICustomerDal
+    public class EfCustomerDal:GenericRepository<Customer>,ICustomerDal
     {
 
     }

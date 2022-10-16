@@ -1,0 +1,24 @@
+﻿@using EntityLayer.Concrete
+@model Product
+@{
+    ViewData["Title"] = "AddProduct";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<h1>Add Product</h1>
+
+<form method="post">
+    @Html.Label("Product Name")
+    @Html.TextBoxFor(p => p.Name)
+    @Html.ValidationMessageFor(p => p.Name)
+    <br />
+    @Html.Label("Product Price")
+    @Html.TextBoxFor(p => p.Price)
+    @Html.ValidationMessageFor(p => p.Price)
+    <br />
+    @Html.Label("Product Stock")
+    @Html.TextBoxFor(p => p.Stock)
+    @Html.ValidationMessageFor(p => p.Stock)
+    <br />
+    <button>Add Product</button>
+</form>

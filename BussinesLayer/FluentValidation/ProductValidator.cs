@@ -11,8 +11,9 @@ namespace BussinesLayer.FluentValidation
         public ProductValidator()
         {
             RuleFor(p => p.Name).NotEmpty().WithMessage("You cannot leave the product name blank.");
-            RuleFor(p => p.Name).MinimumLength(3).WithMessage("product name should be 3 characters");
+            RuleFor(p => p.Name).MinimumLength(3).WithMessage("product name should be 3 characters.");
             RuleFor(p => p.Stock).NotEmpty().WithMessage("You cannot leave the stock  blank.");
+            RuleFor(p => p.Price).NotEmpty().WithMessage("You cannot leave the price blank.");
         }
     }
 }

@@ -2,11 +2,12 @@
 using DataAccessLayer.Concretes;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace DataAccessLayer.Repositories
 {
-    class GenericRepository<T> : IGenericDal<T> where T : class
+    public class GenericRepository<T> : IGenericDal<T> where T : class
     {
         public void Delete(T t)
         {
@@ -17,7 +18,8 @@ namespace DataAccessLayer.Repositories
 
         public List<T> GetList()
         {
-            throw new NotImplementedException();
+            using var c = new Context();
+            return c.Set<T>().ToList();
         }
 
         public T GetById(int id)
