@@ -5,8 +5,7 @@ using System.Text;
 
 namespace DataAccessLayer.Abstract
 {
-    public interface ICustomerDal:IGenericDal<Customer>
+    public interface IJobDal: IGenericDal<Job>
     {
-        List<Customer> GetCustomerListWithJob();
     }
 }

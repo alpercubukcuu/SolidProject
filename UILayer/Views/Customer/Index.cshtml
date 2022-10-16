@@ -5,13 +5,14 @@
     Layout = "~/Views/Shared/_UILayout.cshtml";
 }
 
-<h1>Products</h1>
+<h1>Customers</h1>
 
 <table class="table table-bordered">
     <tr>
         <th>#</th>
         <th>Customer Name</th>
-        <th>Customer City /</th>     
+        <th>Customer City /</th>
+        <th>Customer Job /</th>
         <th>Delete /</th>
         <th>Update</th>
     </tr>
@@ -20,7 +21,8 @@
         <tr>
             <td>@item.Id -</td>
             <td>@item.Name</td>
-            <td>@item.City</td>           
+            <td>@item.City</td>
+            <td>@item.Job.Name</td>
             <td><a href="/Customer/DeleteCustomer/@item.Id" class="btn btn-outline-danger">Delete</a></td>
             <td><a href="/Customer/UpdateCustomer/@item.Id" class="btn btn-outline-success">Update</a></td>
         </tr>

@@ -5,6 +5,7 @@ using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,17 +16,25 @@ namespace UILayer.Controllers
     public class CustomerController : Controller
     {
         CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+        JobManager jobManager = new JobManager(new EfJobDal());
         CustomerValidator validationRules = new CustomerValidator();
         public IActionResult Index()
         {
           
-            var products = customerManager.TGetList();
+            var products = customerManager.GetCustomersWithJob();
             return View(products);
         }
 
         [HttpGet]
         public IActionResult AddCustomer()
         {
+            List<SelectListItem> val = (from x in jobManager.TGetList()
+                                        select new SelectListItem
+                                        {
+                                            Text = x.Name,
+                                            Value = x.JobId.ToString()
+                                        }).ToList();
+            ViewBag.jobs = val;
             return View();
         }
 
@@ -52,6 +61,13 @@ namespace UILayer.Controllers
         [HttpGet]
         public IActionResult UpdateCustomer(int id)
         {
+            List<SelectListItem> val = (from x in jobManager.TGetList()
+                                        select new SelectListItem
+                                        {
+                                            Text = x.Name,
+                                            Value = x.JobId.ToString()
+                                        }).ToList();
+            ViewBag.jobs = val;
             var customer = customerManager.TGetById(id);
             return View(customer);
         }

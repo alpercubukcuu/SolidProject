@@ -16,6 +16,9 @@
     @Html.TextBoxFor(p => p.City)
     @Html.ValidationMessageFor(p => p.City)
     <br />
+    <br />
+    @Html.Label("Please Select Job")
+    @Html.DropDownListFor(p=>p.JobId,(List<SelectListItem>)ViewBag.jobs)
   
     <button>Add Customer</button>
 </form>
